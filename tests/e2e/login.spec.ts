@@ -15,14 +15,14 @@ test.describe('Coverfox Login Flow', () => {
     await homePage.navigateTo('https://www.coverfox.com/'); 
   });
 
-  // test('should login successfully with valid mobile number and OTP', async ({ page }) => {
-  //   await homePage.clickLoginLink();
-  //   await homePage.loginTocoverfox(VALID_MOBILE_NUMBER);
-  //   await expect(homePage.otpTextbox).toBeVisible();
-  //   await expect(homePage.verifyButton).toBeVisible();
-  //   await homePage.enterOtpAndVerify(FIXED_TEST_OTP);
-  //   // await expect(page).not.toHaveURL('https://www.coverfox.com/user-login/');
-  // });
+  test('should login successfully with valid mobile number and OTP', async ({ page }) => {
+    await homePage.clickLoginLink();
+    await homePage.loginTocoverfox(VALID_MOBILE_NUMBER);
+    await expect(homePage.otpTextbox).toBeVisible();
+    await expect(homePage.verifyButton).toBeVisible();
+    await homePage.enterOtpAndVerify(FIXED_TEST_OTP);
+    // await expect(page).not.toHaveURL('https://www.coverfox.com/user-login/');
+  });
 
   test('should show OTP field after submitting a valid mobile number', async () => {
    await homePage.clickLoginLink();
