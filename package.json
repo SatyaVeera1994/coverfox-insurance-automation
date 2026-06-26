@@ -1,0 +1,32 @@
+{
+  "name": "coverfox-insurance-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": { 
+    "login": "npx playwright test tests/e2e/login.spec.ts --headed",
+    "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed"
+},
+
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SatyaVeera1994/coverfox-insurance-automation.git"
+  },
+  "keywords": [
+    "playwright",
+    "playwright-e2e-tests",
+    "playwright-mcp"
+  ],
+  "author": "satya",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SatyaVeera1994/coverfox-insurance-automation/issues"
+  },
+  "homepage": "https://github.com/SatyaVeera1994/coverfox-insurance-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1"
+  }
+}
