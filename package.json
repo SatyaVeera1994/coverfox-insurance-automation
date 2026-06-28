@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "login": "npx playwright test tests/e2e/login.spec.ts --headed",
-    "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed"
-},
-
-
+    "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed",
+    "car-insurance": "npx playwright test tests/e2e/carinsurance.e2e.spec.ts --headed",
+    "car-insuranceRegistration": "npx playwright test tests/e2e/carInsuranceRegistration.spec.ts --headed"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SatyaVeera1994/coverfox-insurance-automation.git"
@@ -28,5 +28,8 @@
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.0.1"
+  },
+  "dependencies": {
+    "p-iteration": "^1.1.8"
   }
 }
