@@ -67,17 +67,7 @@ export default class BasePage {
     }
   }
 
-  async doubleClick(element: Locator): Promise<void> {
-    try {
-      await expect(element).toBeVisible();
-      await element.dblClick();
-    } catch (error) {
-      console.error(
-        `Failed to double click element: ${element.toString()}, Error: ${error}`
-      );
-      throw error;
-    }
-  }
+  
 
   async scrollIntoView(element: Locator): Promise<void> {
     try {
