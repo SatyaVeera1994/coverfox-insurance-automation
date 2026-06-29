@@ -7,32 +7,40 @@ test.describe("Car insurance e2e test", () => {
 
   test.beforeEach(async ({ page }) => {
     carInsurancePage = new CarInsurancePage(page);
-    await carInsurancePage.navigateTo("https://www.coverfox.com/");
+    await page.goto("https://www.coverfox.com/");
   });
 
-  test("verify car insurance quote count", async ({ page }) => {
+  const data = carInsuranceData[0];
+
+  test(`verify quote count for ${data.brand} ${data.model}`, async ({ page }) => {
+
     await carInsurancePage.navigateToCarInsurancePage();
     await carInsurancePage.clickDontKnowCarNumberButton();
-    await carInsurancePage.selectBrand(carInsuranceData[0].brand);
-    await carInsurancePage.selectModel(carInsuranceData[0].model);
-    await carInsurancePage.selectFuel(carInsuranceData[0].fuelType);
-    await carInsurancePage.selectVariant(carInsuranceData[0].variant);
-    await carInsurancePage.selectRTO(
-      carInsuranceData[0].rto,
-      carInsuranceData[0].rtoOption,
-    );
-    await carInsurancePage.selectRegistrationYear(
-      carInsuranceData[0].registrationYear,
-    );
-    await carInsurancePage.selectPolicyStatus(carInsuranceData[0].policyStatus);
-    await carInsurancePage.selectPreviousClaim(
-      carInsuranceData[0].previousClaim,
-    );
-    await carInsurancePage.clickQuoteButton();
+
+    await carInsurancePage.selectBrand(data.brand);
+    await carInsurancePage.selectModel(data.model);
+    await carInsurancePage.selectFuel(data.fuelType);
+    await carInsurancePage.selectVariant(data.variant);
+
+    await carInsurancePage.selectRTO(data.rto, data.rtoOption);
+
+    await carInsurancePage.selectRegistrationYear(data.registrationYear);
+    await carInsurancePage.selectPolicyStatus(data.policyStatus);
+    await carInsurancePage.selectPreviousClaim(data.previousClaim);
+
+   await carInsurancePage.clickQuoteButton();
     await carInsurancePage.waitForElement(carInsurancePage.quotesCountLocator);
     const quotesCount = await carInsurancePage.getQuotesCount();
      console.log(`Quotes Count: ${quotesCount}`);
      expect(quotesCount).toBeGreaterThan(0);
-     
+
+    await test.info().attach("quotes-count", {
+      body: `Quotes Count: ${quotesCount}`,
+      contentType: "text/plain",
+    });
+   
+   
+    
   });
 });
+
